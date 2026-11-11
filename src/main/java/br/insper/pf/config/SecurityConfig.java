@@ -37,8 +37,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.POST, "/tarefas").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/tarefas").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/tarefas/{id}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/health").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> oauth
